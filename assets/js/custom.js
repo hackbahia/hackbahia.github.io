@@ -42,7 +42,7 @@
 	/*  2. EVENT TIME COUNTER
 	/* ----------------------------------------------------------- */
 	
-	$('#mu-event-counter').countdown('2018/09/22 08:00').on('update.countdown', function(event) {
+	$('#mu-event-counter').countdown('2018/09/15 08:00').on('update.countdown', function(event) {
 	  var $this = $(this).html(event.strftime(''
 	    + '<span class="mu-event-counter-block"><span>%D</span> Dias</span> '
 	    + '<span class="mu-event-counter-block"><span>%H</span> Horas</span> '
