@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HackBahia 2025 - Em Breve</title>
+    <title>HackBahia 2025 - Evento de Segurança da Informação</title>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Cores da identidade visual do banner */
             --bg-color: #0d1128;
-            --primary-color: #ff003c; /* Vermelho do banner */
-            --secondary-color: #00e6e6; /* Azul/Ciano do banner */
+            --primary-color: #ff003c;
+            --secondary-color: #00e6e6;
             --text-color: #E6E6FA; 
             --dark-grey: #1a1e38;
             --medium-grey: #2c325c;
@@ -29,61 +28,110 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             font-family: var(--font-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden; /* Evita barras de rolagem desnecessárias */
+            overflow-x: hidden;
         }
 
-        /* DIV PARA A ANIMAÇÃO DE PARTÍCULAS */
         #particles-js {
             position: fixed;
             width: 100%;
             height: 100%;
             top: 0;
             left: 0;
-            z-index: 0; /* Fica no fundo, mas acima do background color */
+            z-index: 0;
         }
 
         .container {
             position: relative;
-            z-index: 1; /* Garante que o conteúdo fique acima das partículas */
+            z-index: 1;
             padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(13, 17, 40, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
         .logo {
-            max-width: 300px;
-            margin: 0 auto 20px auto;
+            max-width: 150px;
         }
 
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            color: var(--primary-color); /* Cor sólida, sem gradiente */
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
         }
 
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.8;
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .hero .date {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
             margin-bottom: 40px;
         }
-        
+
         #countdown {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap; /* Para se ajustar em telas menores */
+            gap: 20px;
+            flex-wrap: wrap;
             margin-bottom: 40px;
         }
 
         .countdown-item {
-            background: rgba(26, 30, 56, 0.7); /* Fundo semi-transparente */
-            backdrop-filter: blur(5px);
-            padding: 15px;
+            background: rgba(26, 30, 56, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px;
             border: 1px solid var(--medium-grey);
-            border-radius: 8px;
-            min-width: 100px;
+            border-radius: 10px;
+            min-width: 120px;
         }
 
         .countdown-item span {
@@ -94,15 +142,36 @@
         }
 
         .countdown-item p {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            color: var(--secondary-color); /* Cor ajustada para melhor visibilidade */
+            color: var(--secondary-color);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+            margin: 10px;
+        }
+
+        .cta-button:hover {
+            background: var(--secondary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 230, 230, 0.2);
         }
 
         .social-icons {
             display: flex;
             justify-content: center;
             gap: 25px;
+            margin-top: 40px;
         }
 
         .social-icons a {
@@ -117,42 +186,458 @@
             transform: translateY(-5px);
         }
 
-        @media (max-width: 600px) {
-            h1 { font-size: 2.5rem; }
-            .logo { max-width: 200px; }
-            .countdown-item { min-width: 80px; padding: 10px; }
-            .countdown-item span { font-size: 2rem; }
+        /* Sections */
+        section {
+            padding: 80px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+        }
+
+        .section-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* About Section */
+        .about {
+            background: rgba(26, 30, 56, 0.3);
+        }
+
+        /* CFP Section */
+        .cfp {
+            background: linear-gradient(135deg, rgba(255, 0, 60, 0.1), rgba(0, 230, 230, 0.1));
+        }
+
+        .cfp-content {
+            background: rgba(26, 30, 56, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid var(--medium-grey);
+            margin: 20px 0;
+        }
+
+        /* Sponsors Section */
+        .sponsors {
+            background: rgba(26, 30, 56, 0.3);
+        }
+
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .sponsor-card {
+            background: rgba(26, 30, 56, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid var(--medium-grey);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .sponsor-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .sponsor-logo {
+            width: 100px;
+            height: 100px;
+            background: var(--medium-grey);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--secondary-color);
+        }
+
+        /* History Section */
+        .history {
+            background: rgba(26, 30, 56, 0.3);
+        }
+
+        .history-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .history-card {
+            background: rgba(26, 30, 56, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid var(--medium-grey);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .history-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .history-year {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .history-info {
+            margin-bottom: 20px;
+        }
+
+        .history-link {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .history-link:hover {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(13, 17, 40, 0.95);
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ff003c 0%, #00e6e6 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.8rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(255, 0, 60, 0.3);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 0, 60, 0.4);
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero .date {
+                font-size: 1.4rem;
+            }
+
+            .countdown-item {
+                min-width: 80px;
+                padding: 15px;
+            }
+
+            .countdown-item span {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .sponsors-grid,
+            .history-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ELEMENTO PARA A ANIMAÇÃO -->
     <div id="particles-js"></div>
 
-    <div class="container">
-        <img src="https://hackbahia.github.io/images-event/logo.png" alt="Logo HackBahia" class="logo">
-        <h1>HackBahia 2025</h1>
-        <p class="subtitle">Nosso site está em construção. A contagem regressiva para a próxima edição do HackBahia já começou!</p>
+    <!-- Header -->
+    <header>
+        <nav>
+            <img src="https://hackbahia.github.io/images-event/logo.png" alt="Logo HackBahia" class="logo">
+            <ul class="nav-links">
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#cfp">Call for Papers</a></li>
+                <li><a href="#sponsors">Patrocinadores</a></li>
+                <li><a href="#history">Histórico</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <div id="countdown">
-            <div class="countdown-item"><span id="days">00</span><p>Dias</p></div>
-            <div class="countdown-item"><span id="hours">00</span><p>Horas</p></div>
-            <div class="countdown-item"><span id="minutes">00</span><p>Minutos</p></div>
-            <div class="countdown-item"><span id="seconds">00</span><p>Segundos</p></div>
-        </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <img src="https://hackbahia.github.io/images-event/logo.png" alt="Logo HackBahia" class="logo" style="max-width: 200px; margin-bottom: 30px;">
+            <h1>HackBahia 2025</h1>
+            <p class="subtitle">O maior evento de segurança da informação da Bahia</p>
+            <p class="date">04 de outubro de 2025 - Salvador/BA</p>
 
-        <div class="social-icons">
-            <a href="https://www.instagram.com/hackbahia/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://x.com/hackbahia" target="_blank" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="https://linkedin.com/company/hackbahia" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <div id="countdown">
+                <div class="countdown-item"><span id="days">00</span><p>Dias</p></div>
+                <div class="countdown-item"><span id="hours">00</span><p>Horas</p></div>
+                <div class="countdown-item"><span id="minutes">00</span><p>Minutos</p></div>
+                <div class="countdown-item"><span id="seconds">00</span><p>Segundos</p></div>
+            </div>
+
+            <a href="#cfp" class="cta-button">Submeter Palestra</a>
+            <a href="#sponsors" class="cta-button">Ver Patrocinadores</a>
+
+            <div class="social-icons">
+                <a href="https://www.instagram.com/hackbahia/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://x.com/hackbahia" target="_blank" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://linkedin.com/company/hackbahia" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Sobre o HackBahia 2025</h2>
+            <div class="section-content">
+                <p>O HackBahia é o principal evento de segurança da informação da Bahia, que visa difundir conhecimento sobre a área para profissionais e estudantes, principalmente para aqueles que estejam começando ou interessados em ingressar na área.</p>
+                
+                <p>Em sua oitava edição, o HackBahia 2025 promete ser ainda mais especial, com palestras de alto nível, workshops práticos, CTF (Capture The Flag), networking e muito mais. O evento acontecerá no Parque Tecnológico da Bahia, em Salvador, proporcionando um ambiente único para troca de experiências e conhecimento.</p>
+                
+                <p>Nossa missão é fortalecer a comunidade de segurança da informação na Bahia, conectando profissionais, estudantes e entusiastas em um ambiente colaborativo e inovador.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call for Papers Section -->
+    <section id="cfp" class="cfp">
+        <div class="container">
+            <h2 class="section-title">Call for Papers</h2>
+            <div class="cfp-content">
+                <h3 style="color: var(--primary-color); margin-bottom: 20px;">Submeta sua palestra!</h3>
+                <p>O Call for Papers do HackBahia 2025 está aberto! Estamos buscando palestrantes apaixonados por segurança da informação para compartilhar conhecimento e experiências com nossa comunidade.</p>
+                
+                <p><strong>Temas de interesse:</strong></p>
+                <ul style="text-align: left; max-width: 600px; margin: 20px auto;">
+                    <li>Segurança de aplicações web e mobile</li>
+                    <li>Análise de malware e forense digital</li>
+                    <li>Pentest e testes de invasão</li>
+                    <li>Threat hunting e resposta a incidentes</li>
+                    <li>Segurança em nuvem e infraestrutura</li>
+                    <li>Red team e blue team</li>
+                    <li>Novas tecnologias e tendências em segurança</li>
+                </ul>
+                
+                <p>Não perca a oportunidade de fazer parte do maior evento de segurança da Bahia! Submeta sua palestra e ajude a construir uma comunidade mais forte e conectada.</p>
+                
+                <a href="https://www.papercall.io/hackbahia2025" target="_blank" class="cta-button" style="margin-top: 30px;">
+                    <i class="fas fa-paper-plane"></i> Submeter Palestra
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsors Section -->
+    <section id="sponsors" class="sponsors">
+        <div class="container">
+            <h2 class="section-title">Nossos Patrocinadores</h2>
+            <div class="section-content">
+                <p>Agradecemos aos nossos patrocinadores que tornam o HackBahia possível. Seu apoio é fundamental para o sucesso do evento e para o fortalecimento da comunidade de segurança da informação na Bahia.</p>
+            </div>
+            
+            <div class="sponsors-grid">
+                <div class="sponsor-card">
+                    <div class="sponsor-logo">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Patrocinador Ouro</h3>
+                    <p>Seja nosso patrocinador ouro e tenha destaque especial no evento</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <div class="sponsor-logo">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Patrocinador Prata</h3>
+                    <p>Apoie o evento como patrocinador prata</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <div class="sponsor-logo">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Patrocinador Bronze</h3>
+                    <p>Faça parte do evento como patrocinador bronze</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <div class="sponsor-logo">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Apoiador</h3>
+                    <p>Seja um apoiador do HackBahia 2025</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <p><strong>Interessado em patrocinar?</strong></p>
+                <a href="mailto:contato@hackbahia.com" class="cta-button">
+                    <i class="fas fa-envelope"></i> Entre em Contato
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section id="history" class="history">
+        <div class="container">
+            <h2 class="section-title">Histórico do Evento</h2>
+            <div class="section-content">
+                <p>O HackBahia tem uma rica história de fortalecimento da comunidade de segurança da informação na Bahia. Conheça nossas edições anteriores:</p>
+            </div>
+            
+            <div class="history-grid">
+                <div class="history-card">
+                    <div class="history-year">2024</div>
+                    <div class="history-info">
+                        <p><strong>Data:</strong> 24 de agosto</p>
+                        <p><strong>Local:</strong> Parque Tecnológico da Bahia</p>
+                        <p>Sexta edição com foco em palestras e networking</p>
+                    </div>
+                    <a href="2024/" class="history-link" target="_blank" rel="noopener noreferrer">Ver Site</a>
+                </div>
+                
+                <div class="history-card">
+                    <div class="history-year">2023</div>
+                    <div class="history-info">
+                        <p><strong>Data:</strong> 26 de agosto</p>
+                        <p><strong>Local:</strong> Parque Tecnológico da Bahia</p>
+                        <p>Quinta edição com CTF e Village Submission</p>
+                    </div>
+                    <a href="2023/" class="history-link" target="_blank" rel="noopener noreferrer">Ver Site</a>
+                </div>
+                
+                <div class="history-card">
+                    <div class="history-year">2022</div>
+                    <div class="history-info">
+                        <p><strong>Data:</strong> Agosto</p>
+                        <p><strong>Local:</strong> Salvador/BA</p>
+                        <p>Quarta edição do evento</p>
+                    </div>
+                    <a href="2022/" class="history-link" target="_blank" rel="noopener noreferrer">Ver Site</a>
+                </div>
+                
+                <div class="history-card">
+                    <div class="history-year">2019</div>
+                    <div class="history-info">
+                        <p><strong>Data:</strong> 2019</p>
+                        <p><strong>Local:</strong> Salvador/BA</p>
+                        <p>Terceira edição do HackBahia</p>
+                    </div>
+                    <a href="2019/" class="history-link" target="_blank" rel="noopener noreferrer">Ver Site</a>
+                </div>
+                
+                <div class="history-card">
+                    <div class="history-year">2018</div>
+                    <div class="history-info">
+                        <p><strong>Data:</strong> 2018</p>
+                        <p><strong>Local:</strong> Salvador/BA</p>
+                        <p>Segunda edição do evento</p>
+                    </div>
+                    <a href="2018/" class="history-link" target="_blank" rel="noopener noreferrer">Ver Site</a>
+                </div>
+                
+                <div class="history-card">
+                    <div class="history-year">2017</div>
+                    <div class="history-info">
+                        <p><strong>Data:</strong> 07 de outubro</p>
+                        <p><strong>Local:</strong> Salvador/BA</p>
+                        <p>Primeira edição - 100 ingressos, 6 palestras</p>
+                    </div>
+                    <a href="2017/" class="history-link" target="_blank" rel="noopener noreferrer">Ver Site</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <a href="#top" class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <img src="https://hackbahia.github.io/images-event/logo.png" alt="Logo HackBahia" style="max-width: 150px; margin-bottom: 20px;">
+            <p>&copy; 2025 HackBahia. Todos os direitos reservados.</p>
+            <div class="social-icons" style="margin-top: 20px;">
+                <a href="https://www.instagram.com/hackbahia/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://x.com/hackbahia" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://linkedin.com/company/hackbahia" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
     
-    <!-- SCRIPTS PARA ANIMAÇÃO -->
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
-        // --- Lógica da Animação de Partículas ---
+        // Animação de Partículas
         particlesJS('particles-js', {
           "particles": {
             "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
@@ -167,7 +652,7 @@
           "retina_detect": true
         });
 
-        // --- Lógica da Contagem Regressiva ---
+        // Contagem Regressiva
         const countdown = () => {
             const countDate = new Date("October 4, 2025 09:00:00").getTime();
             const now = new Date().getTime();
@@ -187,6 +672,41 @@
             document.querySelector('#seconds').innerText = format(textSecond);
         };
         const interval = setInterval(countdown, 1000);
+
+        // Smooth Scrolling para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        // Mostrar/ocultar o botão baseado no scroll
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        // Scroll suave para o topo quando clicar no botão
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
     </script>
 </body>
 </html>
