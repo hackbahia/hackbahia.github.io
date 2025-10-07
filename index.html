@@ -91,10 +91,10 @@
 								<ul id="mainmenu" class="ms-2">
 									<li><a href="#section-hero">Inicio<span></span></a></li>
 									<li><a href="#section-about">Sobre<span></span></a></li>
-                                    <li><a href="#section-speakers">Palestrantes<span></span></a></li>
+									<li><a href="#section-speakers">Palestrantes<span></span></a></li>
                                     <li><a href="#section-schedule">Agenda<span></span></a></li>
 									<li><a href="#section-ticket">Ingressos<span></span></a></li>
-                                    <!-- <li><a href="#section-sponsor">Patrocinador<span></span></a></li> -->
+                                    <li><a href="#section-sponsor">Patrocinadores<span></span></a></li>
                                     <li><a href="#section-sponsors">Apoiadores<span></span></a></li>
 								</ul>
 							</nav>
@@ -169,7 +169,7 @@
             </section>
 		    <!-- section close -->
 
-               <!-- section begin -->
+      <!-- section begin -->
             <section id="section-speakers" class="text-light" data-bgimage="url(images-event/bg/1.jpg) fixed top center" data-stellar-background-ratio=".2">
 				<div class="wm wm-border dark wow fadeInDown">palestrantes</div>
                 <div class="container">
@@ -308,9 +308,7 @@
 									<h3>Reinaldo Bispo (Corvo)</h3>
 									<p class="lead">Threat Intelligence Analyst</p>
 									<div class="small-border"></div>
-                                    <p>Formado como técnico em informática pelo IFBA, bacharel em Sistemas de Informação pela UESB e especializado em Ethical Hacking & CyberSecurity pela UNICIV. Atua na área de Threat Intelligence e possui interesse em entender como fraudes funcionam.
-
-</p>
+                                    <p>Formado como técnico em informática pelo IFBA, bacharel em Sistemas de Informação pela UESB e especializado em Ethical Hacking & CyberSecurity pela UNICIV. Atua na área de Threat Intelligence e possui interesse em entender como fraudes funcionam.</p>
 								</div>
 							</div>
 							<!-- team close -->
@@ -327,9 +325,7 @@
 									<h3>Manoelito Filho</h3>
 									<p class="lead">SOC Advisor</p>
 									<div class="small-border"></div>
-                                    <p>Power Ranger azul do time de Blue Consulting (Tempest), atua como consultor técnico do serviço de SOC (SOC Advisor), engenheiro ~~elétrico~~ eletricista pela UFBA e membro do Axé Sec, Raul Hacker Club e do Instituto Aaron Swartz.
-
-</p>
+                                    <p>Power Ranger azul do time de Blue Consulting (Tempest), atua como consultor técnico do serviço de SOC (SOC Advisor), engenheiro ~~elétrico~~ eletricista pela UFBA e membro do Axé Sec, Raul Hacker Club e do Instituto Aaron Swartz.</p>
 								</div>
 							</div>
 							<!-- team close -->
@@ -339,6 +335,8 @@
                     </div>
                 </div>
             </section>
+
+         
 
           <!-- section begin -->
             <section id="section-ticket" class="text-light" data-bgimage="url(images-event/bg/2.jpg) fixed top" data-stellar-background-ratio=".2">
@@ -370,6 +368,26 @@
             <!-- section close -->
            
 
+            <!-- section begin -->
+                    <section id="section-sponsor">
+                        <div class="wm wm-border dark wow fadeInDown">Patrocinadores</div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6 offset-md-3 text-center wow fadeInUp">
+                                    <h1>Patrocinadores</h1>
+                                </div>
+        
+                                <div class="col-md-12 text-center">
+                                    <div class="spacer-single"></div>
+                                    <a href="https://www.xsite.com.br/" target="_blank" rel="noopener noreferrer">
+                                        <img src="images-event/logo/7.png" alt="Patrocinador" class="sponsor-logo">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+          <!-- section close -->
+
           <!-- section begin -->
                     <section id="section-sponsors">
                         <div class="wm wm-border dark wow fadeInDown ">Apoiadores</div>
@@ -383,7 +401,7 @@
                                     <div class="spacer-single"></div>
                                     <a href="https://www.nullbyte-con.org/" target="_blank" rel="noopener noreferrer"><img src="images-event/logo/1.png" alt="" class="grey-hover"></a>
                                     <a href="https://www.cajusec.com.br/" target="_blank" rel="noopener noreferrer"><img src="images-event/logo/2.png" alt="" class="grey-hover"></a>
-                                    <a href="https://doity.com.br/0xe-hacker-conference" target="_blank" rel="noopener noreferrer"><img src="images-event/logo/3.png" alt="" class="grey-hover"></a>
+                                    <a href="https://conference.oxehc.com.br/" target="_blank" rel="noopener noreferrer"><img src="images-event/logo/3.png" alt="" class="grey-hover"></a>
                                     <a href="https://raulhc.cc/" target="_blank" rel="noopener noreferrer"><img src="images-event/logo/4.png" alt="" class="grey-hover"></a>
                                     <a href="https://axesec.cc/" target="_blank" rel="noopener noreferrer"><img src="images-event/logo/5.png" alt="" class="grey-hover"></a>
                                 </div>
@@ -429,6 +447,46 @@
       $(".twentytwenty-container[data-orientation='vertical']").twentytwenty({default_offset_pct: 0.3, orientation: 'vertical'});
     });
     </script>
+
+    <script>
+    // Função para controlar o dropdown das palestras
+    function toggleTalk(element) {
+        const talkItem = element.parentElement;
+        const isActive = talkItem.classList.contains('active');
+        
+        // Fechar todos os outros itens
+        document.querySelectorAll('.talk-item').forEach(item => {
+            item.classList.remove('active');
+        });
+        
+        // Se o item clicado não estava ativo, ativar ele
+        if (!isActive) {
+            talkItem.classList.add('active');
+        }
+    }
+    </script>
+
+    <style>
+    /* Estilo especial para a logo do patrocinador */
+    .sponsor-logo {
+        max-width: 300px !important;
+        height: auto !important;
+        margin: 20px !important;
+        border: 2px solid #ddd !important;
+        border-radius: 8px !important;
+        padding: 25px !important;
+        background: #ffffff !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+        transition: all 0.3s ease !important;
+        transform: scale(1);
+    }
+    
+    .sponsor-logo:hover {
+        transform: scale(1.05) !important;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+        border-color: #e91e63 !important;
+    }
+    </style>
 
 
 </body>
