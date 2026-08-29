@@ -53,6 +53,12 @@ const supporters = [
     url: "https://axesec.cc/",
     logo: "assets/apoiadores/5.png",
   },
+
+   {
+    name: "Donas Security",
+    url: "https://www.instagram.com/donasecurity/",
+    logo: "assets/apoiadores/6.png",
+  },
 ];
 
 function renderSchedule() {
