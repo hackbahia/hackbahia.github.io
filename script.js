@@ -1,30 +1,61 @@
+// ---------------------------------------------------------------------------
+// AGENDA
+// type: "talk" (palestra) ou "break" (intervalo). Para palestras, "speaker"
+// deve ser igual ao "name" do palestrante na lista abaixo.
+// ---------------------------------------------------------------------------
 const schedule = [
-  { time: "08:00", title: "Credenciamento", speaker: "Check-in & Coffee", tag: "geral" },
-  { time: "09:00", title: "Abertura Oficial", speaker: "Organização HackBahia", tag: "abertura" },
-  { time: "09:30", title: "Keynote: 10 Anos de HackBahia", speaker: "Fundadores", tag: "keynote" },
-  { time: "10:30", title: "Red Team Operations na Prática", speaker: "Zoziel Freire", tag: "ofensiva" },
-  { time: "11:30", title: "Análise de Malware com IA", speaker: "Andrey Glauzer", tag: "defesa" },
-  { time: "12:30", title: "Almoço & Networking", speaker: "Intervalo", tag: "geral" },
-  { time: "14:00", title: "Hacking em Ambientes Cloud", speaker: "Maicon Christ", tag: "ofensiva" },
-  { time: "15:00", title: "Forense Digital: Do Incidente ao Tribunal", speaker: "Gabriel Luiz", tag: "forense" },
-  { time: "16:00", title: "Workshop: CTF ao Vivo", speaker: "Comunidade HackBahia", tag: "workshop" },
-  { time: "17:30", title: "Encerramento & Premiações", speaker: "Organização", tag: "abertura" },
+  { start: "08:20", end: "08:30", type: "start", title: "Abertura" },
+  { start: "08:30", end: "09:20", type: "talk", title: "Linux Sandboxing: Introdução, Técnicas e Escaping", speaker: "Gildásio Jr." },
+  { start: "09:30", end: "10:20", type: "talk", title: "Windows Process Injection - DIY", speaker: "Alan Lacerda" },
+  { start: "10:30", end: "11:20", type: "talk", title: "Compromentendo a segurança de um ERP utilizado por provedores de Internet", speaker: "Yueslly Lisboa" },
+  { start: "11:30", end: "12:50", type: "break", title: "Almoço" },
+  { start: "13:00", end: "13:50", type: "talk", title: "Hacking iOS Apps", speaker: "Fernando Pinheiro" },
+  { start: "14:00", end: "14:50", type: "talk", title: "Quando o ps mente: detecção de rootkits na camada do kernel", speaker: "Victor Mascarenhas" },
+  { start: "14:50", end: "15:05", type: "break", title: "Coffee-Break" },
+  { start: "15:10", end: "16:00", type: "talk", title: "O PHP está morto?", speaker: "Adriele (Obtuosa)" },
+  { start: "16:10", end: "17:00", type: "talk", title: "Cloud Security Hunting: Misconfigurations, Identities & Attack Paths", speaker: "Alexandro Silva (Alexos)" },
+  { start: "17:10", end: "17:40", type: "finish", title: "Encerramento" }
 ];
 
+// ---------------------------------------------------------------------------
+// PALESTRANTES
+// photo: coloque a foto em assets/palestrantes/ com o nome indicado abaixo
+// (quadrada, mín. 400x400, rosto centralizado). Se o arquivo não existir,
+// o card mostra as iniciais automaticamente.
+// ---------------------------------------------------------------------------
 const speakers = [
-  { name: "Zoziel Freire", role: "Red Team / Forense Digital", years: "15+ anos", initials: "ZF", featured: true },
-  { name: "Andrey Glauzer", role: "Malware Analysis / Threat Intel", years: "10+ anos", initials: "AG" },
-  { name: "Maicon Christ", role: "Cloud Security / Pentest", years: "7+ anos", initials: "MC", featured: true },
-  { name: "Gabriel Luiz", role: "Forense Digital / IR", years: "8+ anos", initials: "GL" },
-  { name: "Fábio Castro", role: "Bug Bounty / AppSec", years: "6+ anos", initials: "FC" },
-  { name: "Ricardo Longatto", role: "Engenharia Reversa", years: "12+ anos", initials: "RL", featured: true },
+  { name: "Gildásio Jr.", initials: "GJ", photo: "assets/palestrantes/1.png" },
+  { name: "Alan Lacerda", initials: "AL", photo: "assets/palestrantes/2.png" },
+  { name: "Yueslly Lisboa", initials: "YL", photo: "assets/palestrantes/3.png" },
+  { name: "Fernando Pinheiro", initials: "FP", photo: "assets/palestrantes/4.png" },
+  { name: "Victor Mascarenhas", initials: "VM", photo: "assets/palestrantes/5.png" },
+  { name: "Adriele (Obtuosa)", initials: "AO", photo: "assets/palestrantes/6.png" },
+  { name: "Alexandro Silva (Alexos)", initials: "AS", photo: "assets/palestrantes/7.png" },
 ];
 
+// ---------------------------------------------------------------------------
+// PATROCINADORES
+// Logos em assets/patrocinadores/ (PNG com fundo transparente, de preferência
+// em branco/claro ou colorido — o fundo do site é escuro).
+// "url" é opcional: se vazio, o logo não é clicável.
+// Se o arquivo do logo não existir, aparece o nome do patrocinador no lugar.
+// ---------------------------------------------------------------------------
 const sponsors = [
-  // Adicione patrocinadores aqui quando os apoios forem confirmados.
-  // { tier: "Ouro", className: "gold", names: ["Nome do patrocinador"] },
-  // { tier: "Prata", className: "silver", names: ["Nome do patrocinador"] },
-  // { tier: "Bronze", className: "bronze", names: ["Nome do patrocinador"] },
+  {
+    tier: "Prata",
+    className: "silver",
+    items: [
+      { name: "XSITE", url: "https://xsite.com.br/", logo: "assets/patrocinadores/1.png" },
+      { name: "Apura", url: "https://apura.io/", logo: "assets/patrocinadores/2.png" },
+    ],
+  },
+  {
+    tier: "Bronze",
+    className: "bronze",
+    items: [
+      { name: "IntruderLabs", url: "https://intruderlabs.com.br", logo: "assets/patrocinadores/3.png" },
+    ],
+  },
 ];
 
 const supporters = [
@@ -53,54 +84,60 @@ const supporters = [
     url: "https://axesec.cc/",
     logo: "assets/apoiadores/5.png",
   },
-
-   {
+  {
     name: "Donas Security",
     url: "https://www.instagram.com/donasecurity/",
     logo: "assets/apoiadores/6.png",
   },
 ];
 
+// Se a imagem não carregar, troca pelo texto do atributo alt.
+const IMG_FALLBACK = "this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:this.alt}))";
+
 function renderSchedule() {
   document.querySelector("#schedule").innerHTML = schedule.map((item) => `
-    <article class="schedule-row">
-      <div class="time">${item.time}</div>
-      <div><span class="schedule-title">${item.title}</span><span class="tag ${item.tag}">[${item.tag}]</span></div>
-      <div class="speaker-meta">${item.speaker}</div>
+    <article class="schedule-row ${item.type === "break" ? "is-break" : ""}">
+      <div class="time">${item.start} – ${item.end}</div>
+      <div><span class="schedule-title">${item.title}</span>${item.type === "break" ? '<span class="tag intervalo">[intervalo]</span>' : ""}</div>
+      <div class="speaker-meta">${item.speaker || ""}</div>
     </article>
   `).join("");
 }
 
 function renderSpeakers() {
-  document.querySelector("#speakers").innerHTML = speakers.map((speaker, index) => `
-    <article class="speaker-card ${speaker.featured ? "featured" : ""}" data-initials="${speaker.initials}">
+  const talkBySpeaker = Object.fromEntries(
+    schedule.filter((item) => item.type === "talk").map((item) => [item.speaker, item])
+  );
+
+  document.querySelector("#speakers").innerHTML = speakers.map((speaker, index) => {
+    const talk = talkBySpeaker[speaker.name];
+    return `
+    <article class="speaker-card" data-initials="${speaker.initials}">
       <span class="speaker-index">${String(index + 1).padStart(2, "0")}</span>
-      <div class="speaker-avatar">${speaker.initials}</div>
+      <div class="speaker-avatar">
+        <span>${speaker.initials}</span>
+        ${speaker.photo ? `<img src="${speaker.photo}" alt="${speaker.name}" loading="lazy" onerror="this.remove()">` : ""}
+      </div>
       <h3>${speaker.name}</h3>
-      <p>${speaker.role}</p>
-      <small>${speaker.years}</small>
-    </article>
-  `).join("");
+      ${talk ? `<p>${talk.title}</p><small>${talk.start} – ${talk.end}</small>` : ""}
+    </article>`;
+  }).join("");
 }
 
 function renderSponsors() {
-  const sponsorTarget = document.querySelector("#sponsors");
-
-  sponsorTarget.innerHTML = sponsors.length
-    ? sponsors.map((tier) => `
-      <div class="sponsor-tier">
-        <div class="tier-name ${tier.className}">${tier.tier}</div>
-        <div class="sponsor-list">${tier.names.map((name) => `<span class="sponsor-pill">${name}</span>`).join("")}</div>
+  document.querySelector("#sponsors").innerHTML = sponsors.map((tier) => `
+    <div class="sponsor-tier">
+      <div class="tier-name ${tier.className}">${tier.tier}</div>
+      <div class="sponsor-logos">
+        ${tier.items.map((item) => {
+          const inner = `<img src="${item.logo}" alt="${item.name}" loading="lazy" onerror="${IMG_FALLBACK}">`;
+          return item.url
+            ? `<a class="sponsor-logo ${tier.className}" href="${item.url}" target="_blank" rel="noopener noreferrer" aria-label="${item.name}">${inner}</a>`
+            : `<div class="sponsor-logo ${tier.className}">${inner}</div>`;
+        }).join("")}
       </div>
-    `).join("")
-    : `
-      <div class="sponsor-callout">
-        <span>// cotas abertas</span>
-        <h3>Seja um patrocinador</h3>
-        <p>Apoie a edição de 10 anos do HackBahia e conecte sua marca à comunidade de segurança da informação.</p>
-        <a href="mailto:contato@hackbahia.com.br?subject=Patrocínio%20HackBahia" class="button button-ghost">Falar com a organização</a>
-      </div>
-    `;
+    </div>
+  `).join("");
 
   document.querySelector("#supporters").innerHTML = supporters.map((supporter) => `
     <a class="supporter-card" href="${supporter.url}" target="_blank" rel="noopener noreferrer" aria-label="${supporter.name}">
@@ -132,7 +169,7 @@ function setupHeader() {
 }
 
 function setupCountdown() {
-  const target = new Date("2026-09-26T09:00:00-03:00").getTime();
+  const target = new Date("2026-09-26T08:30:00-03:00").getTime();
   const countdown = document.querySelector("#countdown");
 
   function render() {
@@ -168,8 +205,8 @@ function setupReveal() {
   document.querySelectorAll(".reveal").forEach((item) => observer.observe(item));
 }
 
-// renderSchedule();
-// renderSpeakers();
+renderSchedule();
+renderSpeakers();
 renderSponsors();
 setupMenu();
 setupHeader();
